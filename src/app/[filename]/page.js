@@ -5,7 +5,7 @@ import { clearTranscriptionItems } from "../libs/awsTranscriptionHelpers";
 import ResultVideo from "../components/ResultVideo";
 import TranscriptionEditor from "../components/TranscriptionEditior";
 
-export default function filePage({ params }) {
+export default function FilePage({ params }) {
      const filename = params.filename;
 
 
