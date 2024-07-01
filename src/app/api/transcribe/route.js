@@ -5,8 +5,8 @@ function getClient() {
      return new TranscribeClient({
           region: 'ap-south-1',
           credentials: {
-               accessKeyId: process.env.AWS_ACCESS_KEY,
-               secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+               accessKeyId: process.env.dkvg77_AWS_ACCESS_KEY,
+               secretAccessKey: process.env.dkvg77_AWS_SECRET_ACCESS_KEY,
           }
      })
 }
@@ -14,11 +14,11 @@ function getClient() {
 function createTranscriptionCommand(filename) {
      return new StartTranscriptionJobCommand({
           TranscriptionJobName: filename,
-          OutputBucketName: process.env.AWS_BUCKET,
+          OutputBucketName: process.env.dkvg77_AWS_BUCKET,
           OutputKey: filename + '.transcription',
           IdentifyLanguage: true,
           Media: {
-               MediaFileUri: 's3://' + process.env.AWS_BUCKET + '/' + filename
+               MediaFileUri: 's3://' + process.env.dkvg77_AWS_BUCKET + '/' + filename
           }
      })
 }
@@ -60,13 +60,13 @@ async function getTranscriptionFile(filename){
      const s3client = new S3Client({
           region: 'ap-south-1',
           credentials:{
-               accessKeyId: process.env.AWS_ACCESS_KEY,
-               secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+               accessKeyId: process.env.dkvg77_AWS_ACCESS_KEY,
+               secretAccessKey: process.env.dkvg77_AWS_SECRET_ACCESS_KEY,
           }
      })
 
      const getObjectCommand = new GetObjectCommand({
-          Bucket:process.env.AWS_BUCKET,
+          Bucket:process.env.dkvg77_AWS_BUCKET,
           Key: transcriptionFile,
      })
      let transcriptionFileResponse = null;
