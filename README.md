@@ -1,9 +1,9 @@
-# # # LIVE: https://caption-crafter.vercel.app/
+# LIVE: https://caption-crafter.vercel.app/
 
-# # Caption Crafter
-# Apply captions for your Videos
+## Caption Crafter
+### Apply captions for your Videos
 
-Developed a website for adding captions to videos using AWS Transcribe.
-Implemented video compression and customizable caption options enchancing video accessibility and user experience.
-Built the frontend with Next.js and the backend with Node.js.
-Integrated AWS S3 for video storage and deployed on Vercel.
+--> Developed a website for adding captions to videos using AWS Transcribe.   
+--> Implemented video compression and customizable caption options enchancing video accessibility and user experience.   
+--> Built the frontend with Next.js and the backend with Node.js.   
+--> Integrated AWS S3 for video storage and deployed on Vercel.   
