@@ -1,4 +1,4 @@
-# LIVE: https://caption-crafter.vercel.app/
+# LIVE: https://caption-crafter2.vercel.app/
 
 ## Caption Crafter
 ### Apply captions for your Videos
