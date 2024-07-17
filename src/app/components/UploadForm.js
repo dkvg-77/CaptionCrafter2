@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 export default function UploadForm() {
 
-     const [isUploading, setIsUploading]= useState(false);
+     const [isUploading, setIsUploading] = useState(false);
 
      const router = useRouter();
 
@@ -15,16 +15,28 @@ export default function UploadForm() {
           const files = ev.target.files;
           if (files.length > 0) {
                const file = files[0];
-               setIsUploading(true)
-               const res = await axios.postForm('/api/upload', {
-                    file,
-               })
-               setIsUploading(false);
-               console.log(res.data);
-               const newName = res.data.newName;
-               router.push('/'+ newName);
+               setIsUploading(true);
+               try {
+                    const ext = file.name.split('.').pop();
+                    const type = file.type;
+                    const { data } = await axios.get(`/api/upload?ext=${ext}&type=${type}`);
+                    console.log(data);
+                    const { presignedUrl, newName } = data;
+            
+                    // Upload file to S3 using the presigned URL
+                    await axios.put(presignedUrl, file, {
+                        headers: {
+                            'Content-Type': file.type,
+                        },
+                    });
+            
+                    // Handle success, for example, redirecting after upload
+                    router.push('/' + newName);
+                } catch (err) {
+                    console.error(err);
+                    setIsUploading(false);
+               }
           }
-
      }
      return (
           <>
